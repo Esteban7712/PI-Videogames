@@ -1,0 +1,23 @@
+.container {
+    border: 1px solid white;
+    border-radius: 10px;
+    background-color: #4CAF50;/* rgba(39, 246, 7, 0.5); */
+    padding: 30 px;
+    width: 400px;
+}
+
+.buttonContainer {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.buttonContainer button {
+    margin-top: 3px;
+    margin-right: 3px;
+}
+
+.textContainer {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 6px;
+}
