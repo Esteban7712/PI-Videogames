@@ -1,9 +1,13 @@
 import  Card  from '../Card/Card.jsx';
 import React from 'react';
+import { useSelector} from "react-redux"
 
 export default function Cards(props) {
-   const { games } = props;
-   console.log(games)
+   /* const { games } = props;
+   console.log(games) */
+  
+  const games = useSelector(state => state.games)
+  
    return (
      <div>
        {games.map((game) => (

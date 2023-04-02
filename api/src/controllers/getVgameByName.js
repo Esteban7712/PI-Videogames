@@ -14,7 +14,7 @@ const getVgameByName = async (req, res) => {
 
       const info = await axios(`${URL}?search=${name}&key=${API_KEY}`);//pedimos el juego por nombre
       const data = info.data;
-      console.log(data);
+      //console.log(data);
       if (!data.length) {
         throw new Error("Game not Found");
       }

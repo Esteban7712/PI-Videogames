@@ -4,12 +4,12 @@ const { Router } = require("express");
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
-const getGenres = require("../controllers/getGenres.js");
-const getVgameById = require("../controllers/getVgameById.js");
-const getBdVgame = require("../controllers/getBdVgame.js");
-const postVideogame = require("../controllers/postVideogame.js");
-const deleteBdVgame = require("../controllers/deleteBdVgame.js");
-const getVideogames = require("../controllers/getVideogames.js");
+const getGenres      = require("../controllers/getGenres.js");
+const getVgameById   = require("../controllers/getVgameById.js");
+const getBdVgame     = require("../controllers/getBdVgame.js");
+const postVideogame  = require("../controllers/postVideogame.js");
+const deleteBdVgame  = require("../controllers/deleteBdVgame.js");
+const getVideogames  = require("../controllers/getVideogames.js");
 const getVgameByName = require("../controllers/getVgameByName.js");
 
 const router = Router();

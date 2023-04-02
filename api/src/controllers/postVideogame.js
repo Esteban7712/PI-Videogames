@@ -12,7 +12,7 @@ const postVideogame = async (req, res) => {
         rating,
         
       } = req.body;
-      if (
+      if (//valido que si tenga todos los campos completos
         
         !name ||
         !description ||
@@ -22,7 +22,7 @@ const postVideogame = async (req, res) => {
         !rating
     
       ) {
-        //return res.status(404).json({ message: error.message }); //{ message: "Complete all Fields" }
+        res.status(404).json({ message: error.message }); 
       }
       const newVideogame = await Videogame.create({
         

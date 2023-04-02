@@ -7,36 +7,40 @@ import styles from "./Card.module.css"
 //import { useDispatch, useSelector } from "react-redux";
 
 const Imagenes = styled.img`
-  border-radius: 50px;
+  border-radius: 10px;
   width: 350px;
+  height: 200px;
 `;
 const Carta = styled.div`
-   
-   display: inline-table;
-   margin: 5px; 
-   border: 1px solid white;
-   border-radius: 10px;
-   background-color: #64DD17;
-   padding: 30 px;
-   width: 350px;
-`
+  display: inline-table;
+  margin: 5px;
+  border: 1px solid white;
+  border-radius: 10px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 30 px;
+  width: 350px;
+`;
 
 
 
 export function Card(props) {
-  console.log(props)
+  //console.log(props)
    
    return (
      <Carta>
-       <div className={styles.buttonContainer}>
+       {/* <div className={styles.buttonContainer}>
          <button onClick={() => props.onClose(props.id)}>X</button>
-       </div>
-        <Link to={`/detail/${props.id}`}>
-       <h1>{props.name}</h1>
-        </Link>
-       <h2>Released: {props.released}</h2>
-       <h2>Rating: {props.rating}</h2>
+       </div> */}
        <Imagenes img src={props.background_image} alt="Img not found" />
+       <Link to={`/detail/${props.id}`}>
+         <h2>{props.name}</h2>
+       </Link>
+       <h4 className={styles.textContainer}>
+         {props.genres.map((genre) => {
+           return " - " + genre.name + " - ";
+         })}
+       </h4>
      </Carta>
    );
 }

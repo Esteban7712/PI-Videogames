@@ -21,17 +21,18 @@ const getVgameById = async (req, res) => {
         background_image: data.background_image,
 
         platforms: data.platforms.map((platf) => {
-          return { name: platf.platform.name };
+          return  " - " +platf.platform.name + " - ";
         }),
 
         genres: data.genres.map((genre) => {
-          return { name: genre.name };
+          return " - " + genre.name + " - ";
         }),
+
         description: data.description,
         created: false,
       };
 
-      //console.log(game);
+      //console.log(game.genres);
       res.status(200).json(game);
     } catch (error) {
       res.status(500).json({ message: error.message });

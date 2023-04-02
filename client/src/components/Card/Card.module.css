@@ -1,7 +1,7 @@
-.container {
+/* .container {
     border: 1px solid white;
     border-radius: 10px;
-    background-color: #4CAF50;/* rgba(39, 246, 7, 0.5); */
+    background-color: #4CAF50;
     padding: 30 px;
     width: 400px;
 }
@@ -14,7 +14,7 @@
 .buttonContainer button {
     margin-top: 3px;
     margin-right: 3px;
-}
+} */
 
 .textContainer {
     display: flex;

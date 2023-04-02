@@ -6,18 +6,19 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const Imagenes = styled.img`
-  border-radius: 100px;
-  float: left;
+  border-radius: 50px;
+  width: 350px;
 `;
 
 const Carta = styled.div`
   display: inline-table;
   margin: 5px;
+  color: white;
   border: 1px solid white;
   border-radius: 10px;
-  background-color: #64dd17;
+  background-color: rgba(0, 0, 0, 0.5);
   padding: 30 px;
-  width: 350px;
+  width: 1000px;
 `;
 
 export default function Detail() {
@@ -51,8 +52,8 @@ export default function Detail() {
       <h2>id: {game.id}</h2>
       <h2>released: {game.released}</h2>
       <h2>rating: {game.rating}</h2>
-      {/* <h2>platforms: {game.platforms}</h2>
-      <h2>genres: {game.genres}</h2> */}
+      <h2>platforms: {game.platforms}</h2>
+      <h2>genres: {game.genres}</h2>
       <Imagenes src={game.background_image} alt="not found"></Imagenes>
       <h2>description: {game.description}</h2>
     </Carta>

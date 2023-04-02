@@ -34,29 +34,32 @@ export default function Form(props) {
     props.login(userData)
   }
 
-    return (
-        <div className={styles.loginBox}>
-            <img className={styles.logTheme} src="r&m.jpg" alt="logo"/>
-            <h1 className={styles.logTitle}>Login</h1>
-            <form onSubmit={handleSubmit}>
-                <label for="username">Username:</label>
-                <input
-                    type="text"
-                    name="username"
-                    value={userData.username}
-                    onChange={handleInputChange}
-                    className={error.username && styles.warning}/>
-                <p className='danger'>{error.username}</p>
-                <label for="password">Password:</label>
-                <input
-                    type="password"
-                    name="password"
-                    value={userData.password}
-                    onChange={handleInputChange}
-                    className={error.password && styles.warning}/>
-                <p className='danger'>{error.password}</p>        
-                <button className={styles.submit} type="submit">Enter</button>
-            </form>
-        </div>
-    )
+  return (
+    <div className={styles.loginBox}>
+      <h1 className={styles.logTitle}>Videogames</h1>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="username">Username:</label>
+        <input
+          type="text"
+          name="username"
+          value={userData.username}
+          onChange={handleInputChange}
+          className={error.username && styles.warning}
+        />
+        <p className="danger">{error.username}</p>
+        <label htmlFor="password">Password:</label>
+        <input
+          type="password"
+          name="password"
+          value={userData.password}
+          onChange={handleInputChange}
+          className={error.password && styles.warning}
+        />
+        <p className="danger">{error.password}</p>
+        <button className={styles.submit} type="submit">
+          Enter
+        </button>
+      </form>
+    </div>
+  );
 }

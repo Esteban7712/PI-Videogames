@@ -1,8 +1,17 @@
 .container {
     width: full;
     display: flex;
+    /* flex-direction: column; */
     justify-content: flex-end;
     margin-bottom: 50px;
+}
+
+.create {
+    color: white;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-style: groove;
+    border-width: 4px;
 }
 
 .about {
@@ -10,13 +19,13 @@
     margin-left: 10px;
     margin-right: 10px;
     border-style: groove;
-        border-width: 4px;
+    border-width: 4px;
 }
 
 .home {
     color: white;
     border-style: groove;
-        border-width: 4px;
+    border-width: 4px;
 }
 
 .logout {
