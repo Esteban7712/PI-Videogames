@@ -32,10 +32,10 @@ export function Card(props) {
        {/* <div className={styles.buttonContainer}>
          <button onClick={() => props.onClose(props.id)}>X</button>
        </div> */}
-       <Imagenes img src={props.background_image} alt="Img not found" />
        <Link to={`/detail/${props.id}`}>
-         <h2>{props.name}</h2>
+         <Imagenes img src={props.background_image} alt="Img not found" />
        </Link>
+       <h2>{props.name}</h2>
        <h4 className={styles.textContainer}>
          {props.genres.map((genre) => {
            return " - " + genre.name + " - ";

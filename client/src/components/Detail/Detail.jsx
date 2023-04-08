@@ -8,6 +8,8 @@ import styled from "styled-components";
 const Imagenes = styled.img`
   border-radius: 50px;
   width: 350px;
+  display: flex:
+  align-self: flex-start;
 `;
 
 const Carta = styled.div`
@@ -18,7 +20,7 @@ const Carta = styled.div`
   border-radius: 10px;
   background-color: rgba(0, 0, 0, 0.5);
   padding: 30 px;
-  width: 1000px;
+  width: 1500px;
 `;
 
 export default function Detail() {
@@ -30,7 +32,7 @@ export default function Detail() {
     fetch(`http://localhost:3001/videogames/detail/${detailId}`)
       .then((response) => response.json())
       .then((vGame) => {
-        console.log(vGame)
+        //console.log(vGame)
         if (vGame.name) {
           setGame(vGame);
         } else {
@@ -55,7 +57,7 @@ export default function Detail() {
       <h2>platforms: {game.platforms}</h2>
       <h2>genres: {game.genres}</h2>
       <Imagenes src={game.background_image} alt="not found"></Imagenes>
-      <h2>description: {game.description}</h2>
+      <h3>description: {game.description}</h3>
     </Carta>
   );
 }

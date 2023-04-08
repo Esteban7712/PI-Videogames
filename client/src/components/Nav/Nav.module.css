@@ -1,9 +1,15 @@
 .container {
-    width: full;
+    /* width: full; */
     display: flex;
     /* flex-direction: column; */
-    justify-content: flex-end;
+    justify-content:space-between;
     margin-bottom: 50px;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* height: 40px; */
+}
+.bar {
+    display: flex;
+    justify-content: center;
 }
 
 .create {

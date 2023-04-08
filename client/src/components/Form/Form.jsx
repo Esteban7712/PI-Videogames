@@ -35,31 +35,34 @@ export default function Form(props) {
   }
 
   return (
-    <div className={styles.loginBox}>
-      <h1 className={styles.logTitle}>Videogames</h1>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="username">Username:</label>
-        <input
-          type="text"
-          name="username"
-          value={userData.username}
-          onChange={handleInputChange}
-          className={error.username && styles.warning}
-        />
-        <p className="danger">{error.username}</p>
-        <label htmlFor="password">Password:</label>
-        <input
-          type="password"
-          name="password"
-          value={userData.password}
-          onChange={handleInputChange}
-          className={error.password && styles.warning}
-        />
-        <p className="danger">{error.password}</p>
-        <button className={styles.submit} type="submit">
-          Enter
-        </button>
-      </form>
+    <div className={styles.container}>
+      <div><h1>Hola Mundo</h1></div>
+      <div className={styles.loginBox}>
+        <h1 className={styles.logTitle}>Videogames</h1>
+        <form onSubmit={handleSubmit}>
+          <label htmlFor="username">Username:</label>
+          <input
+            type="text"
+            name="username"
+            value={userData.username}
+            onChange={handleInputChange}
+            className={error.username && styles.warning}
+          />
+          <p className="danger">{error.username}</p>
+          <label htmlFor="password">Password:</label>
+          <input
+            type="password" //colocar type="current-password" para que no se autocomplete
+            name="password"
+            value={userData.password}
+            onChange={handleInputChange}
+            className={error.password && styles.warning}
+          />
+          <p className="danger">{error.password}</p>
+          <button className={styles.submit} type="submit">
+            Start
+          </button>
+        </form>
+      </div>
     </div>
   );
 }

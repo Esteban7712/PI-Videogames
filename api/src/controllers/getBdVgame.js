@@ -17,7 +17,7 @@ const getBdVgame = async (game) => {
                image: item.background_image,
              };
            });
-           return data;
+           res.status(200).json(data);
     } catch (error) {
         throw new Error(error.message)
     }

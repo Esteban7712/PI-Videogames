@@ -7,13 +7,13 @@ import { Link } from "react-router-dom";
 export default function Nav({onSearch}) {
     return (
       <div className={style.container}>
-        <SearchBar onSearch={onSearch} />
         <Link className={style.create} to={"/create"}>
           Create Game
         </Link>
         <Link className={style.about} to={"/about"}>
           About
         </Link>
+        <SearchBar className={style.bar} onSearch={onSearch} />
         <Link className={style.home} to={"/home"}>
           Home
         </Link>

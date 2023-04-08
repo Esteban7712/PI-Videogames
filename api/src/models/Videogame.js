@@ -19,7 +19,7 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     platforms: {
-      type: DataTypes.ARRAY(DataTypes.TEXT),
+      type: DataTypes.ARRAY(DataTypes.STRING),
       allowNull: false,
     },
     background_image: {
@@ -31,7 +31,7 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     rating: {
-      type: DataTypes.FLOAT,
+      type: DataTypes.FLOAT,//FLOAT(1,5)
       allowNull: false,
     },
     created: {

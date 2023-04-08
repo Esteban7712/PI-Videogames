@@ -7,8 +7,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-image: url("./Images/WallPaper.jpg");
   background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 code {
