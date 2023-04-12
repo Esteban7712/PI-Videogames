@@ -17,10 +17,9 @@ function App() {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const username = USER; //cambiar al env
+  const username = USER; 
   const password = PASS;
-  /* const username = "esteban@mail.com"; //cambiar al env
-  const password = "hear1234"; */
+ 
 
   const [access, setAccess] = useState(false);
 
@@ -35,13 +34,13 @@ function App() {
   }
 
 
-  useEffect(() => {
+  useEffect(() => {//cuando el usuario y la clave son correctas nos redirige al home
     !access && navigate("/");
   }, [access, navigate]);
 
   //////////////////////////////////////////////////////////////
 
-  return (
+  return (//se generan las rutas en el front
     <div className="App">
       {location.pathname !== "/" && <Nav />}
       <Routes>
@@ -50,7 +49,7 @@ function App() {
         <Route path="/create" element={<FormCreate />} />
         <Route path="/detail/:detailId" element={<Detail />} />
         <Route path="/about" element={<About />} />
-        <Route path="/*" element={<Error />} />
+        <Route path="*" element={<Error />} />
       </Routes>
     </div>
   );

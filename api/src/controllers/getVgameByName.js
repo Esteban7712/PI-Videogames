@@ -1,17 +1,13 @@
-//require("dotenv").config();
-//const axios = require("axios");
-//const Videogame = require("../db");
-//const { API_KEY } = process.env;
 const getVideoGames = require("./getVideogames.js");
-//const URL = `https://api.rawg.io/api/games`;
+
 
 const getVgameByName = async (req, res) => {
   const  name  = req.query.name;
 
-  let allGames = await getVideoGames()
+  let allGames = await getVideoGames()//nos traemos los juegos 
   //console.log(allGames.results);
   if (name) {
-    let gameByName = await allGames.filter((item) => {
+    let gameByName = await allGames.filter((item) => {//filtramos los juegos que coincidan con las palabras que nos llegan por query
           if (item.name.toLowerCase().includes(name.toLowerCase()))
         gameByName.length ?
           res.status(200).send(gameByName) :

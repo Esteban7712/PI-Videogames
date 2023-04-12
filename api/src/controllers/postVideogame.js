@@ -33,7 +33,7 @@ const postVideogame = async (req, res) => {
     }
 
    
-    //platforms = platforms.toString();
+    
     const newVideogame = await Videogame.create({
       name,
       description,

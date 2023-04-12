@@ -134,9 +134,51 @@ export default function FormCreate() {
             value={form.name}
             placeholder="Name"
             onChange={(e) => changeHandler(e)}
+            onBlur={(e) => changeHandler(e)}
+            className={style.inputs}
           />
-          <span>{error.name}</span>
+          <br></br>
+          <span className={style.danger}>{error.name}</span>
         </div>
+
+        <div>
+          <label>Imagen: </label>
+          <input
+            name="background_image"
+            type="text"
+            value={form.background_image}
+            placeholder="Image URL"
+            onChange={(e) => changeHandler(e)}
+            className={style.inputs}
+          />
+        </div>
+        <span className={style.danger}>{error.background_image}</span>
+
+        <div>
+          <label>Released: </label>
+          <input
+            name="released"
+            type="date"
+            value={form.released}
+            placeholder="Released"
+            onChange={(e) => changeHandler(e)}
+            className={style.inputs}
+          />
+        </div>
+        <span className={style.danger}>{error.released}</span>
+
+        <div>
+          <label>Rating: </label>
+          <input
+            name="rating"
+            type="number"
+            value={form.rating}
+            placeholder="Rating"
+            onChange={(e) => changeHandler(e)}
+            className={style.inputs}
+          />
+        </div>
+        <span className={style.danger}>{error.rating}</span>
 
         <div className={style.plat}>
           <label>Platforms: </label>
@@ -153,65 +195,18 @@ export default function FormCreate() {
                 )
               )}
           </select>
+          <br></br>
+          <span className={style.danger}>{error.platforms}</span>
           <ul>
             <li>
               {form.platforms.map(
                 (
                   platform /* aqui muestro las plataformas que haya marcado en el select*/
-                ) => platform + " "
+                ) => "-" + platform + "-"
               )}
             </li>
           </ul>
         </div>
-        <span>{error.platforms}</span>
-
-        <div>
-          <label>Imagen: </label>
-          <input
-            name="background_image"
-            type="text"
-            value={form.background_image}
-            placeholder="Image URL"
-            onChange={(e) => changeHandler(e)}
-          />
-        </div>
-        <span>{error.background_image}</span>
-
-        <div>
-          <label>Description: </label>
-          <textarea
-            name="description"
-            type="text"
-            value={form.description}
-            placeholder="Description"
-            onChange={(e) => changeHandler(e)}
-          />
-        </div>
-        <span>{error.description}</span>
-
-        <div>
-          <label>Released: </label>
-          <input
-            name="released"
-            type="date"
-            value={form.released}
-            placeholder="Released"
-            onChange={(e) => changeHandler(e)}
-          />
-        </div>
-        <span>{error.released}</span>
-
-        <div>
-          <label>Rating: </label>
-          <input
-            name="rating"
-            type="number"
-            value={form.rating}
-            placeholder="Rating"
-            onChange={(e) => changeHandler(e)}
-          />
-        </div>
-        <span>{error.rating}</span>
 
         <div>
           <label>Genres: </label>
@@ -228,19 +223,35 @@ export default function FormCreate() {
                 )
               )}
           </select>
+          <br></br>
+          <span className={style.danger}>{error.genres}</span>
           <ul>
             <li>
               {form.genres.map(
                 (
                   genre /* aqui muestro los generos que haya marcado en el select*/
-                ) => genre + " "
+                ) => "-" + genre + "-"
               )}
             </li>
           </ul>
         </div>
-        <span>{error.genres}</span>
 
-        <button type="submit">Create</button>
+        <div>
+          <label className={style.descriptLab}>Description: </label>
+          <textarea
+            name="description"
+            type="text"
+            value={form.description}
+            placeholder="Description"
+            onChange={(e) => changeHandler(e)}
+            className={style.descript}
+          />
+        </div>
+        <span className={style.danger}>{error.description}</span>
+
+        <button className={style.button} type="submit">
+          Create
+        </button>
       </form>
     </div>
   );

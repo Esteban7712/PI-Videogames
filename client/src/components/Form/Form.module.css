@@ -49,6 +49,7 @@ body {
     box-sizing: border-box;
     padding: 70px, 30px;
     border-radius: 20px;
+    box-shadow: 0 0 40px -10px #000
 }
 
 .boxTitle{
@@ -63,6 +64,7 @@ body {
     background-color:rgb(17, 206, 17);
     font-weight: bold;
     font-size:x-large;
+    box-shadow: 0 0 40px -10px #000
 }
 
 .title {
@@ -70,5 +72,6 @@ body {
     color: rgb(17, 206, 17);
     font-size: 40px;
     font-family: Rochester, Geneva, Tahoma, sans-serif;
+    box-shadow: 0 0 40px -10px #000
     /* margin-top: 100px; */
 }

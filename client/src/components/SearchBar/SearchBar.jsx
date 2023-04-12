@@ -7,7 +7,7 @@ import { searchByName } from "../redux/actions";
 const Boton = styled.button`
   display: inline-block;
   border-radius: 4px;
-  background-color: #64DD17;
+  background-color: rgb(17, 206, 17);
   border: none;
   color: #000;
   text-align: center;
@@ -15,8 +15,7 @@ const Boton = styled.button`
   transition: all 0.5s;
   cursor: pointer;
   margin: 5px;
-   
-`
+`;
 
 export default function SearchBar() {
 

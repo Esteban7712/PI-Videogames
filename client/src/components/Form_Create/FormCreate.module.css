@@ -1,19 +1,62 @@
 .container {
     color: white;
+    font-weight: bold;
     font-style:oblique;
     background-color: rgba(0, 0, 0, 0.5);
     margin-top: 10px;
-    /* display: flex;
-    flex-direction: column; */
+    margin: auto;
+    width: 400px;
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 0 0 40px -10px #000
 }
 
 .title {
-    color: #64DD17;
+    color: rgb(17, 206, 17);
     font-size: 25px;
     background-color: rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 40px -10px #000
 }
 
 .plat {
-    /* display: flex;
-        flex-direction: row; */
+    
+}
+
+.danger {
+    color: red
+}
+
+.inputs {
+    width: 70%;
+    padding: 3px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    border: 1px solid rgb(17, 206, 17);
+}
+
+.button {
+    width: 200px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: rgb(17, 206, 17);
+    font-weight: bold;
+    font-size: x-large;
+    margin: 5px;
+    cursor: pointer;
+    box-shadow: 0 0 40px -10px #000
+    
+}
+
+.descript {
+    width: 60%;
+    height: 70px;
+    padding: 3px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    border: 1px solid rgb(17, 206, 17);
+}
+
+.descriptLab {
+    position: relative;
+    bottom: 5em;
 }

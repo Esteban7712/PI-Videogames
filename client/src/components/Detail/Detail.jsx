@@ -8,13 +8,13 @@ import loader from "../../Images/loading1.gif";
 
 const Imagenes = styled.img`
   border-radius: 50px;
-  width: 350px;
-  display: flex:
-  align-self: flex-start;
+  width: 550px;
+  height: 305px;
 `;
 
 const Carta = styled.div`
   display: inline-table;
+  flex-direction: column;
   margin: 5px;
   color: white;
   border: 1px solid white;

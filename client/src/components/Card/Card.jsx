@@ -20,6 +20,7 @@ const Carta = styled.div`
   background-color: rgba(0, 0, 0, 0.7);
   padding: 30 px;
   width: 350px;
+  box-shadow: 0 0 40px -10px #000;
 `;
 
 
@@ -29,9 +30,7 @@ export function Card(props) {
    
    return (
      <Carta>
-       {/* <div className={styles.buttonContainer}>
-         <button onClick={() => props.onClose(props.id)}>X</button>
-       </div> */}
+       
        <Link to={`/detail/${props.id}`}>
          <Imagenes
            img

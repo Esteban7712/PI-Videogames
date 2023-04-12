@@ -4,7 +4,7 @@ import styles from "./Pagination.module.css"
 export default function Pagination({gamesXpage, allGames, pagination }) {
     const pageNumbers = []
     
-    for (let i = 1; i <= Math.ceil(allGames/gamesXpage); i++) {
+    for (let i = 1; i <= Math.ceil(allGames/gamesXpage); i++) {//con esta division sabemos cuantos botones de paginado se generan por la cantidad de juegos
       pageNumbers.push(i)
     }
     //console.log(pageNumbers);

@@ -40,7 +40,7 @@ Genre(sequelize); */
 
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
-Videogame.belongsToMany(Genre, { through: "game_genre" });
+Videogame.belongsToMany(Genre, { through: "game_genre" });//relaciono los dos modelos a traves de una tabla intermedia
 Genre.belongsToMany(Videogame, { through: "game_genre" });
 
 
