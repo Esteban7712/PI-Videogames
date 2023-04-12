@@ -33,7 +33,20 @@ export function Card(props) {
          <button onClick={() => props.onClose(props.id)}>X</button>
        </div> */}
        <Link to={`/detail/${props.id}`}>
-         <Imagenes img src={props.background_image} alt="Img not found" />
+         <Imagenes
+           img
+           src={
+             props.background_image ? (
+               props.background_image
+             ) : (
+               <img
+                 src="https://www.mediaplaynews.com/wp-content/uploads/2020/02/videogames-1-e1522270884482.jpg"
+                 alt="Img not found"
+               />
+             )
+           }
+           alt="Img not found"
+         />
        </Link>
        <h2>{props.name}</h2>
        <h4 className={styles.textContainer}>

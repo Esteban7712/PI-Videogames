@@ -24,7 +24,7 @@ function App() {
 
   const [access, setAccess] = useState(false);
 
-  const [games, setGames] = useState([]);
+ 
 
   //acceso a la home con user y pass
   function login(userData) {
@@ -34,52 +34,23 @@ function App() {
     }
   }
 
-  //busqueda de juegos
-  const onSearch = (name) => {
-    fetch(`http://localhost:3001/videogames/?name=${name}`)
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data.results);
-        const result = data.results
-        // eslint-disable-next-line array-callback-return
-        const filteredGames = result.filter((item) => {
-          if (item.name.toLowerCase().includes(name.toLowerCase())) return item;
-          
-        });
-        console.log(filteredGames);
-        if (filteredGames.length) {
-          setGames((oldgames) => [...oldgames, filteredGames]);
-        } else {
-          window.alert("No Game Found");
-        }
-      });
-  };
-
-  //eliminar tarjeta
-  const onClose = (id) => {
-    setGames(games.filter((game) => game.id !== id));
-  };
 
   useEffect(() => {
     !access && navigate("/");
   }, [access, navigate]);
 
   //////////////////////////////////////////////////////////////
-  
 
   return (
     <div className="App">
-      {location.pathname !== "/" && <Nav onSearch={onSearch} />}
+      {location.pathname !== "/" && <Nav />}
       <Routes>
         <Route exact path="/" element={<Form login={login} />} />
-        <Route
-          path="/home"
-          element={<Home /* games={games} */ onClose={onClose} />}
-        />
+        <Route path="/home" element={<Home />} />
         <Route path="/create" element={<FormCreate />} />
         <Route path="/detail/:detailId" element={<Detail />} />
         <Route path="/about" element={<About />} />
-        <Route path="*" element={<Error />} />
+        <Route path="/*" element={<Error />} />
       </Routes>
     </div>
   );

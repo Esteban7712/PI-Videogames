@@ -51,7 +51,7 @@ body {
     border-radius: 20px;
 }
 
-.logTitle{
+.boxTitle{
     color: rgb(17, 206, 17);
     padding-top: 10px;
 }
@@ -63,4 +63,12 @@ body {
     background-color:rgb(17, 206, 17);
     font-weight: bold;
     font-size:x-large;
+}
+
+.title {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: rgb(17, 206, 17);
+    font-size: 40px;
+    font-family: Rochester, Geneva, Tahoma, sans-serif;
+    /* margin-top: 100px; */
 }

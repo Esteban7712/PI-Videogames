@@ -1,30 +1,51 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { getGenres, getPlatforms, postGame } from "../redux/actions.js";
 import validation from "./validation.js";
 import style from "./FormCreate.module.css";
-import axios from "axios"
 
 export default function FormCreate() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate(); //me traigo este hook para redigirime al home cuando finalice la creacion
+  const genres = useSelector((state) => state.genres); // me traigo todos los generos
+  const platforms = useSelector((state) => state.platforms); //me traigo todas las plataformas
+
+  const [genreValidate, setGenreValidate] = useState([]); //estado validador para que no se repita el genero
+  const [platValidate, setPlatValidate] = useState([]); //estado validador para que no se repita la plataforma
+
   const [form, setForm] = useState({
+    //creo un estado para guardar todo lo que llega por inputs
     name: "",
-    platforms: [],
     description: "",
+    platforms: [],
+    background_image: "",
     released: "",
     rating: "",
     genres: [],
   });
 
   const [error, setError] = useState({
+    //creo un estado para validar si ocurren errores en los inputs
     name: "",
-    platforms: [],
     description: "",
+    platforms: [],
+    background_image: "",
     released: "",
     rating: "",
     genres: [],
   });
 
+  useEffect(() => {
+    //al montar el componente despacho las acciones que cargan los estados de generos y plataformas
+    dispatch(getGenres());
+    dispatch(getPlatforms());
+  }, [dispatch]);
+
   const changeHandler = (e) => {
-    const property = e.target.name;
-    const value = e.target.value;
+    //recibo la info de los inputs para guardarla en los estados
+    const property = e.target.name; //esta es la propiedad que quiero modificar
+    const value = e.target.value; //este es el valor que me va a llegar por input
     setForm({ ...form, [property]: value }); //agregamos la info escrita por los inputs
     setError(
       validation({
@@ -34,80 +55,193 @@ export default function FormCreate() {
     );
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (
-      !error.name &&
-      !error.platforms &&
-      !error.description &&
-      !error.released &&
-      !error.rating
-    ) {
-      axios
-        .post("http://localhost:3001/videogames/new", form)
-        .then((res) => alert(res))
-        .catch((err) => alert(err));
+  const handleGenreSelect = (e) => {
+    const genreOption = e.target.value; //guardo el genero que me llega por input
+    const validateG = genreValidate.includes(genreOption); //valido si ese genero ya esta en el array validador
+    if (!validateG) {
+
+      setGenreValidate([...genreValidate, genreOption]);//seteo el array validador si la opcion no esta aun
+      
+      setForm({
+        ...form,
+        genres: [...form.genres, genreOption],
+      });
+  
     }
-  }
+  };
+
+  const handlePlatformSelect = (e) => {
+    const platOption = e.target.value; //guardo la plataforma que me llega por input
+    const validateP = platValidate.includes(platOption); //valido si esa plataforma ya esta en el array validador
+    if (!validateP) {
+
+      setPlatValidate([...platValidate, platOption]);//seteo el array validador si la opcion no esta aun
+     
+      setForm({
+        ...form,
+        platforms: [...form.platforms, platOption],
+      });
+    };
+  };
+
+  /* const handleGenresDelete = (e) => {
+    setForm({
+      ...form,
+      genres: form.genres.filter((d) => d !== e),
+    });
+  }   */
+
+  const handleSubmit = (e) => {
+    //valido si hay algun error en los inputs antes de que se envie la info
+    e.preventDefault();
+    //console.log(form)
+    if (
+      error.name &&
+      error.background_image &&
+      error.description &&
+      error.released &&
+      error.rating
+    ) {
+      alert("Validate Fields");
+    } else {
+      dispatch(postGame(form)); //envio al reducer para que haga el posteo en la bd
+      alert("¡Game Created Succesfully!"); //aviso que la creacion fue exitosa
+      setForm({
+        //vuelvo a setear el estado a vacio
+        name: "",
+        description: "",
+        platforms: [],
+        background_image: "",
+        released: "",
+        rating: "",
+        genres: [],
+      });
+      navigate("/home"); //Me redirige al home al finalizar
+    }
+  };
 
   return (
-    <form className={style.container} onSubmit={handleSubmit}>
-      <div>
-        <label>Name: </label>
-        <input
-          name="name"
-          type="text"
-          value={form.name}
-          placeholder="Name"
-          onChange={changeHandler}
-        />
-        <span>{error.name}</span>
+    <div>
+      <div className={style.title}>
+        <h1>Create your Game</h1>
       </div>
-      <div>
-        <label>Platforms: </label>
-        <input
-          name="platforms"
-          type="text"
-          value={form.platforms}
-          placeholder="Platforms"
-          onChange={changeHandler}
-        />
-      </div>
-      <span>{error.platforms}</span>
-      <div>
-        <label>Description: </label>
-        <input
-          name="description"
-          type="text"
-          value={form.description}
-          placeholder="Description"
-          onChange={changeHandler}
-        />
-      </div>
-      <span>{error.description}</span>
-      <div>
-        <label>Released: </label>
-        <input
-          name="released"
-          type="date"
-          value={form.released}
-          placeholder="Released"
-          onChange={changeHandler}
-        />
-      </div>
-      <span>{error.released}</span>
-      <div>
-        <label>Rating: </label>
-        <input
-          name="rating"
-          type="text"
-          value={form.rating}
-          placeholder="Rating"
-          onChange={changeHandler}
-        />
-      </div>
-      <span>{error.rating}</span>
-      <button type="submit">Create</button>
-    </form>
+      <form className={style.container} onSubmit={(e) => handleSubmit(e)}>
+        <div>
+          <label>Name: </label>
+          <input
+            name="name"
+            type="text"
+            value={form.name}
+            placeholder="Name"
+            onChange={(e) => changeHandler(e)}
+          />
+          <span>{error.name}</span>
+        </div>
+
+        <div className={style.plat}>
+          <label>Platforms: </label>
+          <select onChange={(e) => handlePlatformSelect(e)}>
+            {platforms
+              .sort()
+              .map(
+                (
+                  platform /* mapeo cada uno de las plataformas para que aparezcan en el checkbox */
+                ) => (
+                  <option key={platform} value={platform}>
+                    {platform}
+                  </option>
+                )
+              )}
+          </select>
+          <ul>
+            <li>
+              {form.platforms.map(
+                (
+                  platform /* aqui muestro las plataformas que haya marcado en el select*/
+                ) => platform + " "
+              )}
+            </li>
+          </ul>
+        </div>
+        <span>{error.platforms}</span>
+
+        <div>
+          <label>Imagen: </label>
+          <input
+            name="background_image"
+            type="text"
+            value={form.background_image}
+            placeholder="Image URL"
+            onChange={(e) => changeHandler(e)}
+          />
+        </div>
+        <span>{error.background_image}</span>
+
+        <div>
+          <label>Description: </label>
+          <textarea
+            name="description"
+            type="text"
+            value={form.description}
+            placeholder="Description"
+            onChange={(e) => changeHandler(e)}
+          />
+        </div>
+        <span>{error.description}</span>
+
+        <div>
+          <label>Released: </label>
+          <input
+            name="released"
+            type="date"
+            value={form.released}
+            placeholder="Released"
+            onChange={(e) => changeHandler(e)}
+          />
+        </div>
+        <span>{error.released}</span>
+
+        <div>
+          <label>Rating: </label>
+          <input
+            name="rating"
+            type="number"
+            value={form.rating}
+            placeholder="Rating"
+            onChange={(e) => changeHandler(e)}
+          />
+        </div>
+        <span>{error.rating}</span>
+
+        <div>
+          <label>Genres: </label>
+          <select onChange={(e) => handleGenreSelect(e)}>
+            {genres
+              .sort()
+              .map(
+                (
+                  genre /* mapeo cada uno de los generos para que aparezcan en el select */
+                ) => (
+                  <option key={genre.name} value={genre.name}>
+                    {genre.name}
+                  </option>
+                )
+              )}
+          </select>
+          <ul>
+            <li>
+              {form.genres.map(
+                (
+                  genre /* aqui muestro los generos que haya marcado en el select*/
+                ) => genre + " "
+              )}
+            </li>
+          </ul>
+        </div>
+        <span>{error.genres}</span>
+
+        <button type="submit">Create</button>
+      </form>
+    </div>
   );
 }

@@ -25,7 +25,7 @@ const postVideogame = async (req, res) => {
       res.status(400).json({ message: error.message });
     }
 
-     name = name.toLowerCase();
+    name = name.toLowerCase();
     const exists = await Videogame.findOne({ where: {name: name }//valido si ya hay otro juego creado con el mismo nombre
 })
     if (exists) {

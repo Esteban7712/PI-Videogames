@@ -20,11 +20,12 @@ const getVgameById = async (req, res) => {
         rating: data.rating,
         background_image: data.background_image,
 
-        platforms: data.platforms.map((platf) => {
+        platforms: data.platforms.map((platf) => {//mapeo adentro del array de plataformas
           return " - " + platf.platform.name + " - ";
         }),
 
         genres: data.genres.map((genre) => {
+          //mapeo adentro del array de generos
           return " - " + genre.name + " - ";
         }),
 
@@ -32,7 +33,7 @@ const getVgameById = async (req, res) => {
         created: false,
       };
 
-      //console.log(game.genres);
+     
       res.status(200).json(game);
     } catch (error) {
       res.status(500).json({ message: error.message });
@@ -40,8 +41,11 @@ const getVgameById = async (req, res) => {
   } else {//hacemos la peticion a la bd
     try {
 
-      const gameDb = await Videogame.findOne({
-        include: {
+      const gameDb = await Videogame.findOne({//nos traremos el juego que coincida con el id
+        where: {
+          id: id,
+        },
+        include: {//le incluimos los generos, traidos desde la db
           model: Genre,
           attributes: ["name"],
           through: {
@@ -50,7 +54,7 @@ const getVgameById = async (req, res) => {
         },
       });
 
-      if (gameDb) {
+      if (gameDb) {//si la respuesta es exitosa, le pusheamos los generos al juego
         let genres = [];
         for (let i = 0; i < gameDb.genres.length; i++) {
           genres.push(gameDb.genres[i].name);

@@ -1,5 +1,8 @@
+import React from "react";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
+import { searchByName } from "../redux/actions";
 
 const Boton = styled.button`
   display: inline-block;
@@ -15,22 +18,34 @@ const Boton = styled.button`
    
 `
 
-export default function SearchBar(props) {
+export default function SearchBar() {
 
+   const dispatch = useDispatch();
    const [game, setGame] = useState("")
 
-   const handleChange = (e) => {
-      const { value } = e.target;
-      setGame(value);
+   function handleChange(e) {//guardo el nombre del juego que me llega por input
+      e.preventDefault();
+      setGame(e.target.value);//seteo el estado con ese nombre
    }
 
-   return (
-      <div>
-         <input type='search' onChange={handleChange} placeholder="Search"/>
+   function handleSubmit(e) {//cuando pulse el boton de Add se despacha la accion para traer los juegos ya filtrados
+      e.preventDefault();
+      dispatch(searchByName(game))
+      setGame("");
+   }
 
-         <Boton onClick={() =>
-            props.onSearch(game)}
-         >Add</Boton>
-      </div>
+   
+   return (
+     <div>
+       <input
+         type="text"
+         onChange={(e) => handleChange(e)}
+         placeholder="Search..."
+       />
+
+       <Boton type="submit" onClick={(e) => handleSubmit(e)}>
+         Search
+       </Boton>
+     </div>
    );
 }

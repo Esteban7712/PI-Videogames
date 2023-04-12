@@ -1,3 +1,19 @@
 .container {
-    color: white
+    color: white;
+    font-style:oblique;
+    background-color: rgba(0, 0, 0, 0.5);
+    margin-top: 10px;
+    /* display: flex;
+    flex-direction: column; */
+}
+
+.title {
+    color: #64DD17;
+    font-size: 25px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.plat {
+    /* display: flex;
+        flex-direction: row; */
 }

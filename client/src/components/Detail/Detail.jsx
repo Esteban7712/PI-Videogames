@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import loader from "../../Images/loading1.gif";
 
 const Imagenes = styled.img`
   border-radius: 50px;
@@ -34,9 +35,9 @@ export default function Detail() {
       .then((vGame) => {
         //console.log(vGame)
         if (vGame.name) {
-          setGame(vGame);
+          setGame(vGame); // eslint-disable-line
         } else {
-          window.alert("No hay personajes con ese ID");
+          window.alert("No games with this ID");
         }
       })
       .catch((err) => {
@@ -46,18 +47,26 @@ export default function Detail() {
   }, [detailId]);
 
   return (
-    <Carta>
-      <Link to={"/home"}>
-        <button>To Home</button>
-      </Link>
-      <h1>{game.name}</h1>
-      <h2>id: {game.id}</h2>
-      <h2>released: {game.released}</h2>
-      <h2>rating: {game.rating}</h2>
-      <h2>platforms: {game.platforms}</h2>
-      <h2>genres: {game.genres}</h2>
-      <Imagenes src={game.background_image} alt="not found"></Imagenes>
-      <h3>description: {game.description}</h3>
-    </Carta>
+    <div>
+      {game.id ? (
+        <Carta>
+          <Link to={"/home"}>
+            <button>To Home</button>
+          </Link>
+          <h1>{game.name}</h1>
+          <h2>id: {game.id}</h2>
+          <h2>released: {game.released}</h2>
+          <h2>rating: {game.rating}</h2>
+          <h2>platforms: {game.platforms}</h2>
+          <h2>genres: {game.genres}</h2>
+          <Imagenes src={game.background_image} alt="not found"></Imagenes>
+          <h3>description: {game.description}</h3>
+        </Carta>
+      ) : (
+        <div>
+          <img src={loader} alt="Loading..."></img>
+        </div>
+      )}
+    </div>
   );
 }

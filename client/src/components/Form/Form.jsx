@@ -36,9 +36,11 @@ export default function Form(props) {
 
   return (
     <div className={styles.container}>
-      <div><h1>Hola Mundo</h1></div>
+      <div className={styles.title}>
+        <h1>VIDEOGAMES</h1>
+      </div>
       <div className={styles.loginBox}>
-        <h1 className={styles.logTitle}>Videogames</h1>
+        <h1 className={styles.boxTitle}>HENRY - PI</h1>
         <form onSubmit={handleSubmit}>
           <label htmlFor="username">Username:</label>
           <input
