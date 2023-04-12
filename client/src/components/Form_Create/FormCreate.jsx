@@ -84,13 +84,6 @@ export default function FormCreate() {
     };
   };
 
-  /* const handleGenresDelete = (e) => {
-    setForm({
-      ...form,
-      genres: form.genres.filter((d) => d !== e),
-    });
-  }   */
-
   const handleSubmit = (e) => {
     //valido si hay algun error en los inputs antes de que se envie la info
     e.preventDefault();
@@ -100,7 +93,12 @@ export default function FormCreate() {
       error.background_image &&
       error.description &&
       error.released &&
-      error.rating
+      error.rating &&
+      !form.name &&
+      !form.background_image &&
+      !form.description &&
+      !form.released &&
+      !form.rating
     ) {
       alert("Validate Fields");
     } else {
