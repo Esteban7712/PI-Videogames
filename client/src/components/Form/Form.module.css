@@ -57,15 +57,23 @@ body {
     padding-top: 10px;
 }
 
-.submit{
+.submit {
     width: 200px;
     height: 40px;
     border-radius: 10px;
-    background-color:rgb(17, 206, 17);
+    background-color: rgb(17, 206, 17);
     font-weight: bold;
-    font-size:x-large;
-    box-shadow: 0 0 40px -10px #000;
+    font-size: x-large;
     cursor: pointer;
+    border-color: rgb(17, 206, 17);
+    color: black;
+    box-shadow: 0 0 40px 40px rgb(17, 206, 17) inset, 0 0 0 0 rgb(17, 206, 17);
+    -webkit-transition: all 150ms ease-in-out;
+    transition: all 150ms ease-in-out;
+}
+
+.submit:hover {
+    box-shadow: 0 0 10px 0 rgb(17, 206, 17) inset, 0 0 10px 4px rgb(17, 206, 17);
 }
 
 .title {

@@ -53,6 +53,7 @@ export default function Home() {
   function handleGenreFilter(e) {
     //activo el filtrado por generos cuando se pulse el select de generos
     dispatch(filterByGenre(e.target.value));
+    setCurrentPage(1);
   }
 
   function handleSourceFilter(e) {

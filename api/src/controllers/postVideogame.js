@@ -9,6 +9,7 @@ const postVideogame = async (req, res) => {
       background_image,
       released,
       rating,
+      comments,
       genres
     } = req.body;// recibo toda la informacion que llega por body
 
@@ -20,7 +21,8 @@ const postVideogame = async (req, res) => {
       !platforms ||
       !background_image ||
       !released ||
-      !rating
+      !rating ||
+      !comments
     ) {
       res.status(400).json({ message: error.message });
     }
@@ -41,6 +43,7 @@ const postVideogame = async (req, res) => {
       background_image,
       released,
       rating,
+      comments,
     });
 
     const genreDb = await Genre.findAll({//buscar los generos en la bd
