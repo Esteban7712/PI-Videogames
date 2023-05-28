@@ -7,7 +7,6 @@ const {
 } = process.env;
 //const Videogame = require("./models/Videogame.js")
 //const Genre = require("./models/Genre.js");
-postgresql://postgres:2LkI7Yh18bdrsECovgaH@containers-us-west-57.railway.app:7622/railway
 
 const sequelize = new Sequelize(`postgresql://postgres:2LkI7Yh18bdrsECovgaH@containers-us-west-57.railway.app:7622/railway`, {
   logging: false, // set to console.log to see the raw SQL queries
