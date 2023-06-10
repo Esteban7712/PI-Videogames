@@ -10,8 +10,8 @@ import About from "./components/About/About.jsx";
 import FormCreate from "./components/Form_Create/FormCreate.jsx";
 import Home from "./components/Home/Home.jsx"
 
-const USER = process.env.REACT_APP_LOGIN_USER; //esteban@mail.com
-const PASS = process.env.REACT_APP_LOGIN_PASS;//hear1234
+const USER = process.env.REACT_APP_LOGIN_USER; 
+const PASS = process.env.REACT_APP_LOGIN_PASS;
 
 function App() {
   const location = useLocation();
@@ -32,7 +32,6 @@ function App() {
       navigate("/home");
     }
   }
-
 
   useEffect(() => {//cuando el usuario y la clave son correctas nos redirige al home
     !access && navigate("/");

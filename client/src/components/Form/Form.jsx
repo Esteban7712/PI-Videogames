@@ -2,7 +2,8 @@ import React from "react";
 import validation from "./validation.js";
 import styles from "./Form.module.css";
 
-
+const USER = process.env.REACT_APP_LOGIN_USER; 
+const PASS = process.env.REACT_APP_LOGIN_PASS;
 
 export default function Form(props) {
 
@@ -34,6 +35,15 @@ export default function Form(props) {
     props.login(userData)
   }
 
+  const [guestData, setGuestData] = React.useState({
+        username: USER,
+        password: PASS
+  })
+  
+  const guestEnter = () => {
+      props.login(guestData)
+    }
+
   return (
     <div className={styles.container}>
       <div className={styles.title}>
@@ -64,6 +74,13 @@ export default function Form(props) {
             Start
           </button>
         </form>
+        <div className={styles.loginBox2}>
+          
+          <button className={styles.submit2} onClick={guestEnter}>
+            Guest
+          </button>
+        
+        </div>
       </div>
     </div>
   );
